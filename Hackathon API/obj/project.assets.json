@@ -4882,11 +4882,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\wesll\\Documents\\Git\\Hackathon API\\Hackathon API.csproj",
+      "projectUniqueName": "C:\\Users\\wesll\\Documents\\Git\\HackathonAPI\\Hackathon API\\Hackathon API.csproj",
       "projectName": "Hackathon API",
-      "projectPath": "c:\\Users\\wesll\\Documents\\Git\\Hackathon API\\Hackathon API.csproj",
+      "projectPath": "C:\\Users\\wesll\\Documents\\Git\\HackathonAPI\\Hackathon API\\Hackathon API.csproj",
       "packagesPath": "C:\\Users\\wesll\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\wesll\\Documents\\Git\\Hackathon API\\obj\\",
+      "outputPath": "C:\\Users\\wesll\\Documents\\Git\\HackathonAPI\\Hackathon API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\wesll\\AppData\\Roaming\\NuGet\\NuGet.Config"
