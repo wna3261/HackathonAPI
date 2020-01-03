@@ -22,11 +22,16 @@ namespace Hackathon_API.Services
 
         public Candidato PostCandidato(Candidato candidato)
         {
-            if (candidato.Nota >= 0 && candidato.Nota <= 100)
+            if (candidato != null)
             {
-                var candidatoDb = _candidatoRepository.PostCandidato(candidato);
+                // bool goodConvert = double.TryParse(candidato.Nota.ToString(), out var number);
+                if (candidato.Nota >= 0 && candidato.Nota <= 100
+                    && !candidato.Nome.Any(char.IsDigit) && !candidato.Cidade.Any(char.IsDigit))
+                {
+                    var candidatoDb = _candidatoRepository.PostCandidato(candidato);
 
-                return candidatoDb;
+                    return candidatoDb;
+                }
             }
             return null;
         }
@@ -46,6 +51,24 @@ namespace Hackathon_API.Services
         public void PutCandidato(Candidato candidato)
         {
             _candidatoRepository.PutCandidato(candidato);
+        }
+
+        public void ExibirResultados(int numVagas)
+        {
+            var candidatos = GetCandidatos().ToList().OrderByDescending(x => x.Nota);
+            foreach (var candidato in candidatos)
+            {
+                if (candidato.Nota > 0 && numVagas > 0)
+                {
+                    candidato.Situacao = true;
+                    numVagas--;
+                }
+                else if (numVagas == 0)
+                {
+                    candidato.Situacao = false;
+                }
+                PutCandidato(candidato);
+            }
         }
     }
 }

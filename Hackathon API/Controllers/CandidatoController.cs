@@ -82,5 +82,19 @@ namespace Hackathon_API.Controllers
                 return BadRequest(e);
             }
         }
+
+        [HttpPut("exibirResultados/{numVagas}")]
+        public IActionResult ExibirResultados(int numVagas)
+        {
+            try
+            {
+                _candidatoService.ExibirResultados(numVagas);
+                return Ok(new {Success = true, Message= "Lista de Aprovados atualizado com sucesso!"});
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e);
+            }
+        }
     }
 }
