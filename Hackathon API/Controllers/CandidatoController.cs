@@ -56,11 +56,12 @@ namespace Hackathon_API.Controllers
         }
 
         [HttpPut]
-        public IActionResult PutCandidato()
+        public IActionResult PutCandidato([FromBody]Candidato candidato)
         {
             try
             {
-                return Ok();
+                _candidatoService.PutCandidato(candidato);
+                return NoContent();
             }
             catch (Exception e)
             {

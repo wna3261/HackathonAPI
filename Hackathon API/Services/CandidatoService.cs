@@ -22,9 +22,13 @@ namespace Hackathon_API.Services
 
         public Candidato PostCandidato(Candidato candidato)
         {
-            var candidatoDb = _candidatoRepository.PostCandidato(candidato);
+            if (candidato.Nota >= 0 && candidato.Nota <= 100)
+            {
+                var candidatoDb = _candidatoRepository.PostCandidato(candidato);
 
-            return candidatoDb;
+                return candidatoDb;
+            }
+            return null;
         }
 
         public Candidato GetCandidato(int idCandidato)
@@ -37,6 +41,11 @@ namespace Hackathon_API.Services
         public void DeleteCandidato(int idCandidato)
         {
             _candidatoRepository.DeleteCandidato(idCandidato);
+        }
+
+        public void PutCandidato(Candidato candidato)
+        {
+            _candidatoRepository.PutCandidato(candidato);
         }
     }
 }

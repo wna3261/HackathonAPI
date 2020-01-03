@@ -8,5 +8,6 @@ namespace Hackathon_API.Models
         public string Nome { get; set; }
         public string Cidade { get; set; }
         public double Nota { get; set; }
+        public bool Situacao { get; set; }
     }
 }

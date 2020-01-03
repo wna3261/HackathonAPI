@@ -9,5 +9,6 @@ namespace Hackathon_API.Data.Repositories
         Candidato PostCandidato(Candidato candidato);
         Candidato GetCandidato(int idCandidato);
         void DeleteCandidato(int idCandidato);
+        void PutCandidato(Candidato candidato);
     }
 }
