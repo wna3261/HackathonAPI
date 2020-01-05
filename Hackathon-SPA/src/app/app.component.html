@@ -1,1 +1,23 @@
-<app-candidato-list></app-candidato-list>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+
+    <a class="navbar-brand" href="#">Hackathon REST API</a>
+  
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a routerLink="home" class="nav-link" routerLinkActive="active">Home</a>
+        </li>
+        <li class="nav-item active">
+          <a routerLink="cadastrar"class="nav-link" rounterLinkActive="active">Cadastrar</a>
+        </li>
+        <!-- <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="number" placeholder="Numero de Vagas">
+          <button class="btn btn-secondary my-2 my-sm-0" type="submit">Exibir Resultados</button>
+        </form> -->
+      </ul>
+    </div>
+
+</nav>
+
+<router-outlet></router-outlet>
+<!-- <app-candidato-list></app-candidato-list> -->

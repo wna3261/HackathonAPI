@@ -1,9 +1,9 @@
-<div class="panel panel-primary">
+<div class="container-fluid">
   <div class="panel-heading">
     <h2>CANDIDATOS</h2>
   </div>
   <div class="panel-body">
-    <table class="table table-striped">
+    <table class="table table-bordered table-striped">
       <thead>
         <tr>
           <th>Nome</th>
@@ -17,12 +17,13 @@
       <tbody>
         <tr *ngFor="let candidato of candidatos">
         <td>{{candidato.nome}}</td>
-          <td>{{candidato.nome}}</td>
-          <td>{{candidato.nome}}</td>
-          <td>{{candidato.nome}}</td>
-          <td><button class="btn btn-danger">Delete</button>
-            <button class="btn btn-info"
-              style="margin-left: 10px">Detalhes</button>
+          <td>{{candidato.cidade}}</td>
+          <td>{{candidato.nota}}</td>
+          <td>{{candidato.situacao}}</td>
+          <td>
+              <button (click)="getCandidato(candidato.id)" class="btn btn-success mr-2">Get</button>
+              <button (click)="atualizarCandidato(candidato.id)" class="btn btn-info mr-2">Update/Put</button>
+              <button (click)="deletarCandidato(candidato.id)"class="btn btn-danger">Delete</button>
           </td>
         </tr>
       </tbody>

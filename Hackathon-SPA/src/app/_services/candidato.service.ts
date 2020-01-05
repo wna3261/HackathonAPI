@@ -10,9 +10,22 @@ export class CandidatoService {
   constructor(private http: HttpClient) { }
 
   listarCandidatos() {
-    return this.http.get(this.baseUrl).subscribe(next => {
-      next.toString();
-    });
+    return this.http.get(this.baseUrl);
   }
 
+  getCandidato(id: any) {
+    return this.http.get(this.baseUrl + '/' + id);
+  }
+
+  cadastrarCandidato(candidato: any) {
+    return this.http.post(this.baseUrl, candidato);
+  }
+
+  atualizarCandidato(candidato: any) {
+    return this.http.put(this.baseUrl, candidato);
+  }
+
+  deletarCandidato(id: any) {
+    return this.http.delete(this.baseUrl + '/' + id);
+  }
 }

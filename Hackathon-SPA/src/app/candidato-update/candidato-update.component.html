@@ -1,0 +1,26 @@
+<form #registerForm="ngForm" (ngSubmit)="atualizarCandidato()">
+  <h2 class="text-center text-primary">Atualização de Candidato</h2>
+  <hr>
+
+  <!-- <div class="form-group">
+    <input hidden=true type="text" class="form-control" required name="id" [(ngModel)]="candidato.id" placeholder="Nome">
+  </div> -->
+
+  <div class="form-group">
+    <input type="text" class="form-control" required name="nome" [(ngModel)]="candidato.nome" placeholder="Nome">
+  </div>
+
+  <div class="form-group">
+    <input type="text" class="form-control" required name="cidade" [(ngModel)]="candidato.cidade" placeholder="Cidade">
+  </div>
+
+  <div class="form-group">
+    <input type="number" class="form-control" required name="nota" [(ngModel)]="candidato.nota" placeholder="Nota">
+  </div>
+
+  <div class="form-group text-center">
+    <button class="btn btn-info" type="submit">Atualizar</button>
+    <button class="btn btn-default" type="button" (click)="cancel()">Cancelar</button>
+  </div>
+  
+</form>
