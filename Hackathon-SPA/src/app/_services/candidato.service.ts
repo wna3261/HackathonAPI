@@ -28,4 +28,8 @@ export class CandidatoService {
   deletarCandidato(id: any) {
     return this.http.delete(this.baseUrl + '/' + id);
   }
+
+  exibirResultados(numVagas: any) {
+    return this.http.put(this.baseUrl + '/exibirResultados/' + numVagas, null);
+  }
 }

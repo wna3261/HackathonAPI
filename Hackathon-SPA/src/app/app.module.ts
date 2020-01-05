@@ -10,6 +10,7 @@ import { CandidatoService } from './_services/candidato.service';
 import { CandidatoGetComponent } from './candidato-get/candidato-get.component';
 import { CandidatoCreateComponent } from './candidato-create/candidato-create.component';
 import { CandidatoUpdateComponent } from './candidato-update/candidato-update.component';
+import { CandidatoAprovadosComponent } from './candidato-aprovados/candidato-aprovados.component';
 
 @NgModule({
    declarations: [
@@ -17,7 +18,8 @@ import { CandidatoUpdateComponent } from './candidato-update/candidato-update.co
       CandidatoListComponent,
       CandidatoGetComponent,
       CandidatoCreateComponent,
-      CandidatoUpdateComponent
+      CandidatoUpdateComponent,
+      CandidatoAprovadosComponent
    ],
    imports: [
       BrowserModule,

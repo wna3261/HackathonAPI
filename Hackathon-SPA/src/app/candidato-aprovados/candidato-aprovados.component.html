@@ -1,0 +1,9 @@
+<form #resultForm=ngForm (ngSubmit)=exibirResultados() class="form-signin">
+  <h1 class="h3 mb-3 font-weight-normal">Insira o Numero de Vagas</h1>
+
+  <div class="form-group">
+    <input type="number" class="form-control" required name="numVagas" [(ngModel)]="numVagas" placeholder="Numero de Vagas">
+  </div>
+
+  <button class="btn btn-lg btn-primary btn-block" type="submit">Calcular</button>
+</form>

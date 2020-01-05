@@ -13,7 +13,8 @@ export class CandidatoGetComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private candidatoService: CandidatoService
+    private candidatoService: CandidatoService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -26,4 +27,7 @@ export class CandidatoGetComponent implements OnInit {
     });
   }
 
+  home() {
+    this.router.navigate(['home']);
+  }
 }

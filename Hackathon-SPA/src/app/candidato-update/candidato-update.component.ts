@@ -18,13 +18,16 @@ export class CandidatoUpdateComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.route.snapshot.params.id;
+    this.candidatoService.getCandidato(this.id).subscribe(data => {
+      this.candidato = data;
+    });
   }
 
   atualizarCandidato() {
-    this.candidato.id = this.id;
     console.log(this.candidato.id);
     this.candidatoService.atualizarCandidato(this.candidato).subscribe(data => {
-      console.log(data);
+      console.log('Atualizado com sucesso!');
+      this.router.navigate(['home']);
     });
   }
 

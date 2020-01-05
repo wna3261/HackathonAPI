@@ -5,13 +5,15 @@ import { CandidatoListComponent } from '../candidato-list/candidato-list.compone
 import { CandidatoGetComponent } from '../candidato-get/candidato-get.component';
 import { CandidatoCreateComponent } from '../candidato-create/candidato-create.component';
 import { CandidatoUpdateComponent } from '../candidato-update/candidato-update.component';
+import { CandidatoAprovadosComponent } from '../candidato-aprovados/candidato-aprovados.component';
 
 const routes: Routes = [
   { path: '', component: CandidatoListComponent},
   { path: 'home', component: CandidatoListComponent },
   { path: 'get/:id', component: CandidatoGetComponent },
   { path: 'cadastrar', component: CandidatoCreateComponent},
-  { path: 'put/:id', component: CandidatoUpdateComponent}
+  { path: 'put/:id', component: CandidatoUpdateComponent},
+  { path: 'exibirResultados', component: CandidatoAprovadosComponent}
 ];
 
 @NgModule({
