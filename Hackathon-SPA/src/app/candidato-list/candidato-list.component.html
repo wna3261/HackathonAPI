@@ -1,33 +1,37 @@
-<div class="container-fluid">
-  <div class="panel-heading">
-    <h2>CANDIDATOS</h2>
-  </div>
-  <div class="panel-body">
-    <table class="table table-bordered table-striped">
-      <thead>
-        <tr>
-          <th>Nome</th>
-          <th>Cidade</th>
-          <th>Nota</th>
-          <th>Situação</th>
-          <th>Ações</th>
-        </tr>
-      </thead>
+<div class="panel-heading">
+  <h2>CANDIDATOS</h2>
+  <br>
+</div>
 
-      <tbody>
-        <tr *ngFor="let candidato of candidatos">
-        <td>{{candidato.nome}}</td>
-          <td>{{candidato.cidade}}</td>
-          <td>{{candidato.nota}}</td>
-          <td>{{candidato.situacao}}</td>
-          <td>
+<div class="form-list">
+  <div class="container-fluid">
+    <div class="panel-body" style="width: 900px;">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Cidade</th>
+            <th>Nota</th>
+            <th>Situação</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let candidato of candidatos">
+            <td>{{candidato.nome}}</td>
+            <td>{{candidato.cidade}}</td>
+            <td>{{candidato.nota}}</td>
+            <td>{{candidato.situacao? "Aprovado" : "Reprovado"}}</td>
+            <td>
               <button (click)="getCandidato(candidato.id)" class="btn btn-success mr-2">Get</button>
               <button (click)="atualizarCandidato(candidato.id)" class="btn btn-info mr-2">Update/Put</button>
-              <button (click)="deletarCandidato(candidato.id)"class="btn btn-danger">Delete</button>
-          </td>
-        </tr>
-      </tbody>
+              <button (click)="deletarCandidato(candidato.id)" class="btn btn-danger">Delete</button>
+            </td>
+          </tr>
+        </tbody>
 
-    </table>
+      </table>
+    </div>
   </div>
 </div>

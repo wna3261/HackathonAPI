@@ -1,25 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\wesll\\Documents\\Git\\HackathonAPI\\Hackathon API\\Hackathon API.csproj": {}
+    "C:\\Users\\wnaraujo\\Documents\\Git\\HackathonAPI\\Hackathon API\\Hackathon API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\wesll\\Documents\\Git\\HackathonAPI\\Hackathon API\\Hackathon API.csproj": {
+    "C:\\Users\\wnaraujo\\Documents\\Git\\HackathonAPI\\Hackathon API\\Hackathon API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\wesll\\Documents\\Git\\HackathonAPI\\Hackathon API\\Hackathon API.csproj",
+        "projectUniqueName": "C:\\Users\\wnaraujo\\Documents\\Git\\HackathonAPI\\Hackathon API\\Hackathon API.csproj",
         "projectName": "Hackathon API",
-        "projectPath": "C:\\Users\\wesll\\Documents\\Git\\HackathonAPI\\Hackathon API\\Hackathon API.csproj",
-        "packagesPath": "C:\\Users\\wesll\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\wesll\\Documents\\Git\\HackathonAPI\\Hackathon API\\obj\\",
+        "projectPath": "C:\\Users\\wnaraujo\\Documents\\Git\\HackathonAPI\\Hackathon API\\Hackathon API.csproj",
+        "packagesPath": "C:\\Users\\wnaraujo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\wnaraujo\\Documents\\Git\\HackathonAPI\\Hackathon API\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\wesll\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\wnaraujo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -47,6 +52,12 @@
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[3.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.0.0, )"
             }
           },
           "imports": [
@@ -67,7 +78,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
