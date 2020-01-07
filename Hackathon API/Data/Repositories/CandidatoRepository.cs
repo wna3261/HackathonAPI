@@ -49,5 +49,11 @@ namespace Hackathon_API.Data.Repositories
             _dbcontext.Candidatos.Update(candidato);
             _dbcontext.SaveChanges();
         }
+
+        public void PutCandidatos(IEnumerable<Candidato> candidatos)
+        {
+            _dbcontext.Candidatos.UpdateRange(candidatos);
+            _dbcontext.SaveChanges();
+        }
     }
 }

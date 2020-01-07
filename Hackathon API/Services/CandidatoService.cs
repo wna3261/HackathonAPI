@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using Hackathon_API.Data.Repositories;
 using Hackathon_API.Models;
@@ -16,7 +17,7 @@ namespace Hackathon_API.Services
 
         public IEnumerable<Candidato> GetCandidatos()
         {
-            var candidatos = _candidatoRepository.GetCandidatos().ToList();
+            var candidatos = _candidatoRepository.GetCandidatos().OrderByDescending(x => x.Nota).ToList();
             return candidatos;
         }
 
@@ -24,7 +25,6 @@ namespace Hackathon_API.Services
         {
             if (candidato != null)
             {
-                // bool goodConvert = double.TryParse(candidato.Nota.ToString(), out var number);
                 if (candidato.Nota >= 0 && candidato.Nota <= 100
                     && !candidato.Nome.Any(char.IsDigit) && !candidato.Cidade.Any(char.IsDigit))
                 {
@@ -50,12 +50,22 @@ namespace Hackathon_API.Services
 
         public void PutCandidato(Candidato candidato)
         {
-            _candidatoRepository.PutCandidato(candidato);
+            if (candidato == null) return;
+            if (candidato.Nota >= 0 && candidato.Nota <= 100 
+                && !candidato.Nome.Any(char.IsDigit) && !candidato.Cidade.Any(char.IsDigit))
+            {
+                _candidatoRepository.PutCandidato(candidato);
+            }
+        }
+
+        private void PutCandidatos(IEnumerable<Candidato> candidatos)
+        {
+            _candidatoRepository.PutCandidatos(candidatos);
         }
 
         public void ExibirResultados(int numVagas)
         {
-            var candidatos = GetCandidatos().ToList().OrderByDescending(x => x.Nota);
+            var candidatos = GetCandidatos().OrderByDescending(x => x.Nota).ToList();
             foreach (var candidato in candidatos)
             {
                 if (candidato.Nota > 0 && numVagas > 0)
@@ -67,8 +77,10 @@ namespace Hackathon_API.Services
                 {
                     candidato.Situacao = false;
                 }
-                PutCandidato(candidato);
+                // PutCandidato(candidato);
             }
+
+            PutCandidatos(candidatos);
         }
     }
 }

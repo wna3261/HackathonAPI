@@ -9,6 +9,7 @@
       <table class="table table-bordered table-striped">
         <thead>
           <tr>
+            <th>Classificação</th>
             <th>Nome</th>
             <th>Cidade</th>
             <th>Nota</th>
@@ -18,7 +19,8 @@
         </thead>
 
         <tbody>
-          <tr *ngFor="let candidato of candidatos">
+          <tr *ngFor="let candidato of candidatos; let i = index" [attr.data-index]="i">
+            <td>{{i+1}}</td>
             <td>{{candidato.nome}}</td>
             <td>{{candidato.cidade}}</td>
             <td>{{candidato.nota}}</td>

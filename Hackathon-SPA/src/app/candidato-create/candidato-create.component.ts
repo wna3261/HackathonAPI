@@ -31,5 +31,4 @@ export class CandidatoCreateComponent implements OnInit {
   cancel() {
     this.router.navigate(['home']);
   }
-
 }

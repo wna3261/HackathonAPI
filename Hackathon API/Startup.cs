@@ -32,6 +32,7 @@ namespace Hackathon_API
             services.AddControllers();
             services.RegisterServices();
             services.AddCors();
+            services.AddSwaggerConfiguration();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,6 +50,13 @@ namespace Hackathon_API
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
             app.UseAuthorization();
+
+            app.UseSwagger();
+            app.UseSwaggerUI(x =>
+            {
+                x.SwaggerEndpoint("/swagger/v1/swagger.json", "Hackathon v1");
+                x.RoutePrefix = string.Empty;
+            });
 
             app.UseEndpoints(endpoints =>
             {

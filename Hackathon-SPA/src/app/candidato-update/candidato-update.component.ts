@@ -26,7 +26,7 @@ export class CandidatoUpdateComponent implements OnInit {
   atualizarCandidato() {
     console.log(this.candidato.id);
     this.candidatoService.atualizarCandidato(this.candidato).subscribe(data => {
-      console.log('Atualizado com sucesso!');
+      // console.log('Atualizado com sucesso!');
       this.router.navigate(['home']);
     });
   }

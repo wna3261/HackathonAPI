@@ -26,4 +26,7 @@ export class CandidatoAprovadosComponent implements OnInit {
     });
   }
 
+  cancel() {
+    this.router.navigate(['home']);
+  }
 }
