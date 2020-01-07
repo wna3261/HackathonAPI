@@ -10,7 +10,7 @@ namespace Hackathon_API.Configuration
         {
             services.AddSwaggerGen(x =>
             {
-                x.SwaggerDoc("v1", new OpenApiInfo { Title = "HorseMarket", Version = "v1" });
+                x.SwaggerDoc("v1", new OpenApiInfo { Title = "EnemAPP", Version = "v1" });
             });
         }
     }

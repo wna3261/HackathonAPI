@@ -11,6 +11,7 @@ import { CandidatoGetComponent } from './candidato-get/candidato-get.component';
 import { CandidatoCreateComponent } from './candidato-create/candidato-create.component';
 import { CandidatoUpdateComponent } from './candidato-update/candidato-update.component';
 import { CandidatoAprovadosComponent } from './candidato-aprovados/candidato-aprovados.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
    declarations: [
@@ -25,7 +26,8 @@ import { CandidatoAprovadosComponent } from './candidato-aprovados/candidato-apr
       BrowserModule,
       AppRouteModule,
       FormsModule,
-      HttpClientModule
+      HttpClientModule,
+      ModalModule.forRoot()
    ],
    providers: [
       CandidatoService

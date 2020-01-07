@@ -23,7 +23,7 @@ export class CandidatoCreateComponent implements OnInit {
       console.log(data);
       this.router.navigate(['home']);
     }, error => {
-      console.log(error);
+      console.log(error.error);
     });
     // this.router.navigate(['home']);
   }

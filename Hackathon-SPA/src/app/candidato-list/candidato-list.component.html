@@ -28,7 +28,17 @@
             <td>
               <button (click)="getCandidato(candidato.id)" class="btn btn-success mr-2">Get</button>
               <button (click)="atualizarCandidato(candidato.id)" class="btn btn-info mr-2">Update/Put</button>
-              <button (click)="deletarCandidato(candidato.id)" class="btn btn-danger">Delete</button>
+              <!-- <button (click)="deletarCandidato(candidato.id)" class="btn btn-danger">Delete</button> -->
+              <button type="button" class="btn btn-danger" (click)="openModal(deleteCandidato)">Delete</button>
+
+              <ng-template #deleteCandidato>
+                <div class="modal-body text-center">
+                  <p>Deseja realmente excluir o candidato {{candidato.nome}}?</p>
+                  <button type="button" class="btn btn-primary" (click)="decline()">Não</button>
+                  <button type="button" class="btn btn-default" (click)="deletarCandidato(candidato.id)">Excluir</button>
+                </div>
+              </ng-template>
+
             </td>
           </tr>
         </tbody>

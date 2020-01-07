@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { CandidatoService } from '../_services/candidato.service';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
-
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 @Component({
   selector: 'app-candidato-list',
   templateUrl: './candidato-list.component.html',
@@ -10,13 +10,24 @@ import { Router } from '@angular/router';
 })
 export class CandidatoListComponent implements OnInit {
   candidatos: any;
-
+  modalRef: BsModalRef;
+  message: string;
   constructor(
     private candidatoService: CandidatoService,
+    private modalService: BsModalService,
     private router: Router) { }
 
   ngOnInit() {
     this.listarCandidatos();
+  }
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
+  }
+  
+  decline(): void {
+    this.message = 'Declined!';
+    this.modalRef.hide();
   }
 
   listarCandidatos() {
@@ -41,6 +52,7 @@ export class CandidatoListComponent implements OnInit {
     }, error => {
       console.log(error);
     });
+    this.modalRef.hide();
   }
 
 }
