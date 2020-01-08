@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CandidatoService } from '../_services/candidato.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-candidato-create',
@@ -12,18 +13,18 @@ export class CandidatoCreateComponent implements OnInit {
 
   constructor(
     private candidatoService: CandidatoService,
-    private router: Router) { }
+    private router: Router,
+    private toastr: ToastrService) { }
 
   ngOnInit() {
   }
 
   cadastrarCandidato() {
     this.candidatoService.cadastrarCandidato(this.candidato).subscribe(data => {
-      console.log('registrado com sucesso!');
-      console.log(data);
+      this.toastr.success('Cadastrado com Sucesso', 'Sucesso!');
       this.router.navigate(['home']);
     }, error => {
-      console.log(error.error);
+      this.toastr.error('Existem erros nos campos informados')
     });
     // this.router.navigate(['home']);
   }

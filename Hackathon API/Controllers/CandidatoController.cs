@@ -34,7 +34,8 @@ namespace Hackathon_API.Controllers
         {
             try
             {
-                return Ok(_candidatoService.GetCandidato(idCandidato));
+                var candidato = _candidatoService.GetCandidato(idCandidato);
+                return Ok(candidato);
             }
             catch (Exception e)
             {
@@ -47,7 +48,13 @@ namespace Hackathon_API.Controllers
         {
             try
             {
-                return Created("/candidatos", _candidatoService.PostCandidato(candidato));
+                var result = _candidatoService.PostCandidato(candidato);
+                if (result != null)
+                {
+                    return Created("/candidatos", result);
+                }
+
+                return BadRequest("erro na criação");
             }
             catch (Exception e)
             {

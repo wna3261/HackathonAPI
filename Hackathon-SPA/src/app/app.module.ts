@@ -12,6 +12,9 @@ import { CandidatoCreateComponent } from './candidato-create/candidato-create.co
 import { CandidatoUpdateComponent } from './candidato-update/candidato-update.component';
 import { CandidatoAprovadosComponent } from './candidato-aprovados/candidato-aprovados.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+ 
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
    declarations: [
@@ -27,6 +30,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
       AppRouteModule,
       FormsModule,
       HttpClientModule,
+      BrowserAnimationsModule,
+      ToastrModule.forRoot(),
       ModalModule.forRoot()
    ],
    providers: [

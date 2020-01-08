@@ -25,7 +25,7 @@ namespace Hackathon_API.Services
         {
             if (candidato != null)
             {
-                if (candidato.Nota >= 0 && candidato.Nota <= 100
+                if (candidato.Nota >= 0 && candidato.Nota <= 100 && !(string.IsNullOrWhiteSpace(candidato.Nome) || string.IsNullOrWhiteSpace(candidato.Cidade))
                     && !candidato.Nome.Any(char.IsDigit) && !candidato.Cidade.Any(char.IsDigit))
                 {
                     var candidatoDb = _candidatoRepository.PostCandidato(candidato);
@@ -51,7 +51,7 @@ namespace Hackathon_API.Services
         public void PutCandidato(Candidato candidato)
         {
             if (candidato == null) return;
-            if (candidato.Nota >= 0 && candidato.Nota <= 100 
+            if (candidato.Nota >= 0 && candidato.Nota <= 100 && !(string.IsNullOrWhiteSpace(candidato.Nome) || string.IsNullOrWhiteSpace(candidato.Cidade))
                 && !candidato.Nome.Any(char.IsDigit) && !candidato.Cidade.Any(char.IsDigit))
             {
                 _candidatoRepository.PutCandidato(candidato);
