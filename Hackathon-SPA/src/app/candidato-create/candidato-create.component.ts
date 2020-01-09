@@ -23,7 +23,7 @@ export class CandidatoCreateComponent implements OnInit {
   cadastrarCandidato() {
     if (!isNullOrUndefined(this.candidato.nota)) {
       this.candidatoService.cadastrarCandidato(this.candidato).subscribe(data => {
-        this.toastr.success('Cadastrado com Sucesso', 'Sucesso!');
+        this.toastr.success("Candidato cadastrado com sucesso.", 'Sucesso!');
         this.router.navigate(['home']);
       }, error => {
         error.error.errors ?
@@ -33,11 +33,12 @@ export class CandidatoCreateComponent implements OnInit {
               this.toastr.error(error)
             });
           }) :
-          this.toastr.error(error.error);
+          this.toastr.warning(error.error);
       });
     }
     else {
       this.toastr.error("O campo Nota é obrigatório.");
+      this.candidato.nota = 0;
     }
 
     // this.router.navigate(['home']);

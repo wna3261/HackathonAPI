@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CandidatoService } from '../_services/candidato.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { isNullOrUndefined } from 'util';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-candidato-update',
@@ -10,11 +12,13 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class CandidatoUpdateComponent implements OnInit {
   candidato: any = {};
   id: any;
+  notaAntiga: any;
 
   constructor(
     private candidatoService: CandidatoService,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    private toastr: ToastrService) { }
 
   ngOnInit() {
     this.id = this.route.snapshot.params.id;
@@ -24,11 +28,28 @@ export class CandidatoUpdateComponent implements OnInit {
   }
 
   atualizarCandidato() {
-    console.log(this.candidato.id);
-    this.candidatoService.atualizarCandidato(this.candidato).subscribe(data => {
-      // console.log('Atualizado com sucesso!');
-      this.router.navigate(['home']);
-    });
+    //console.log(this.candidato.id);
+    this.notaAntiga = this.candidato.nota;
+    if (!isNullOrUndefined(this.candidato.nota)) {
+      this.candidatoService.atualizarCandidato(this.candidato).subscribe(data => {
+        // console.log('Atualizado com sucesso!');
+        this.toastr.success("Candidato atualizado com sucesso.", "Sucesso!");
+        this.router.navigate(['home']);
+      }, error => {
+        error.error.errors ?
+          Object.values(error.error.errors).forEach(fieldErrors => {
+            let errors = fieldErrors as Array<string>;
+            errors.forEach(error => {
+              this.toastr.error(error)
+            });
+          }) :
+          this.toastr.warning(error.error);
+      });
+    }
+    else {
+      this.toastr.error("O campo Nota é obrigatório.");
+      this.candidato.nota = 0;
+    }
   }
 
   cancel() {

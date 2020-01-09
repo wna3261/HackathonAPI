@@ -54,7 +54,7 @@ namespace Hackathon_API.Controllers
                     return Created("/candidatos", result);
                 }
 
-                return BadRequest("Todos os campos são obrigatórios");
+                return BadRequest("Campos Nome e Cidade não permitem valores numéricos\n Nota deve estar entre 0 e 100");
             }
             catch (Exception e)
             {
@@ -67,8 +67,12 @@ namespace Hackathon_API.Controllers
         {
             try
             {
-                _candidatoService.PutCandidato(candidato);
-                return NoContent();
+                var result = _candidatoService.PutCandidato(candidato);
+                if (result)
+                    return NoContent();
+
+                return BadRequest("Campos Nome e Cidade não permitem valores numéricos\n Nota deve estar entre 0 e 100");
+
             }
             catch (Exception e)
             {
@@ -96,7 +100,7 @@ namespace Hackathon_API.Controllers
             try
             {
                 _candidatoService.ExibirResultados(numVagas);
-                return Ok(new {Success = true, Message= "Lista de Aprovados atualizado com sucesso!"});
+                return Ok(new { Success = true, Message = "Lista de Aprovados atualizado com sucesso!" });
             }
             catch (Exception e)
             {

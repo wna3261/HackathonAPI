@@ -48,14 +48,17 @@ namespace Hackathon_API.Services
             _candidatoRepository.DeleteCandidato(idCandidato);
         }
 
-        public void PutCandidato(Candidato candidato)
+        public bool PutCandidato(Candidato candidato)
         {
-            if (candidato == null) return;
+            if (candidato == null) return false;
             if (candidato.Nota >= 0 && candidato.Nota <= 100 && !(string.IsNullOrWhiteSpace(candidato.Nome) || string.IsNullOrWhiteSpace(candidato.Cidade))
                 && !candidato.Nome.Any(char.IsDigit) && !candidato.Cidade.Any(char.IsDigit))
             {
                 _candidatoRepository.PutCandidato(candidato);
+                return true;
             }
+
+            return false;
         }
 
         private void PutCandidatos(IEnumerable<Candidato> candidatos)
