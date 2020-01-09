@@ -54,7 +54,7 @@ namespace Hackathon_API.Controllers
                     return Created("/candidatos", result);
                 }
 
-                return BadRequest("erro na criação");
+                return BadRequest("Todos os campos são obrigatórios");
             }
             catch (Exception e)
             {

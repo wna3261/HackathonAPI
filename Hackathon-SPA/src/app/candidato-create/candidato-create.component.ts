@@ -9,7 +9,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./candidato-create.component.css']
 })
 export class CandidatoCreateComponent implements OnInit {
-  candidato: any = {};
+  candidato: any = { nome: '', cidade: ''};
 
   constructor(
     private candidatoService: CandidatoService,
@@ -24,7 +24,9 @@ export class CandidatoCreateComponent implements OnInit {
       this.toastr.success('Cadastrado com Sucesso', 'Sucesso!');
       this.router.navigate(['home']);
     }, error => {
-      this.toastr.error('Existem erros nos campos informados')
+      error.error.errors.Nome.forEach(element => {
+        this.toastr.error(element)
+      })
     });
     // this.router.navigate(['home']);
   }
