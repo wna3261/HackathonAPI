@@ -1,20 +1,24 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import {environment} from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CandidatoService {
-  baseUrl = 'http://localhost:5000/candidatos';
+  private baseUrl = environment.baseUrl;
+  private serviceUrl = 'candidatos/';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+    this.baseUrl = this.baseUrl + this.serviceUrl;
+  }
 
   listarCandidatos() {
     return this.http.get(this.baseUrl);
   }
 
   getCandidato(id: any) {
-    return this.http.get(this.baseUrl + '/' + id);
+    return this.http.get(this.baseUrl + id);
   }
 
   cadastrarCandidato(candidato: any) {
@@ -26,10 +30,10 @@ export class CandidatoService {
   }
 
   deletarCandidato(id: any) {
-    return this.http.delete(this.baseUrl + '/' + id);
+    return this.http.delete(`${this.baseUrl}${id}`);
   }
 
   exibirResultados(numVagas: any) {
-    return this.http.put(this.baseUrl + '/exibirResultados/' + numVagas, null);
+    return this.http.put(this.baseUrl + 'exibirResultados/' + numVagas, null);
   }
 }

@@ -19,7 +19,6 @@ export class CandidatoAprovadosComponent implements OnInit {
 
   exibirResultados() {
     this.candidatoService.exibirResultados(this.numVagas).subscribe(data => {
-      console.log(data);
       this.router.navigate(['home']);
     }, error => {
       console.log(error);

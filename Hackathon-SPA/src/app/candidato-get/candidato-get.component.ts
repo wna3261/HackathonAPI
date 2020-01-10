@@ -19,7 +19,6 @@ export class CandidatoGetComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.route.snapshot.params.id;
-    console.log(this.id);
     this.candidatoService.getCandidato(this.id).subscribe(response => {
       this.candidato = response;
     }, error => {
