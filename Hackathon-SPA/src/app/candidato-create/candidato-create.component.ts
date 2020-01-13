@@ -40,8 +40,6 @@ export class CandidatoCreateComponent implements OnInit {
       this.toastr.error("O campo Nota é obrigatório.");
       this.candidato.nota = 0;
     }
-
-    // this.router.navigate(['home']);
   }
 
   cancel() {

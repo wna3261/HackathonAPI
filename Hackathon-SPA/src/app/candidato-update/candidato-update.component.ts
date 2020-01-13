@@ -28,11 +28,9 @@ export class CandidatoUpdateComponent implements OnInit {
   }
 
   atualizarCandidato() {
-    //console.log(this.candidato.id);
     this.notaAntiga = this.candidato.nota;
     if (!isNullOrUndefined(this.candidato.nota)) {
       this.candidatoService.atualizarCandidato(this.candidato).subscribe(data => {
-        // console.log('Atualizado com sucesso!');
         this.toastr.success("Candidato atualizado com sucesso.", "Sucesso!");
         this.router.navigate(['home']);
       }, error => {

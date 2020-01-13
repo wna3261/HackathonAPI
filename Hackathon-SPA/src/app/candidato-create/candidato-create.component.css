@@ -21,3 +21,8 @@
     border-radius: 120px;
     width: 120px;
 }
+
+.btn:hover {
+    background-color: lightblue;
+    color: black;
+}

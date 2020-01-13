@@ -1,6 +1,5 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { CandidatoService } from '../_services/candidato.service';
-import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 @Component({

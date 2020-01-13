@@ -26,10 +26,10 @@
             <td>{{candidato.nota}}</td>
             <td>{{candidato.situacao? "Aprovado" : "Reprovado"}}</td>
             <td>
-              <button (click)="getCandidato(candidato.id)" class="btn btn-success mr-2">Get</button>
-              <button (click)="atualizarCandidato(candidato.id)" class="btn btn-info mr-2">Update/Put</button>
+              <button (click)="getCandidato(candidato.id)" class="btn btn-success mr-2"><i class="fas fa-address-card"></i></button>
+              <button (click)="atualizarCandidato(candidato.id)" class="btn btn-warning mr-2"><i class="fas fa-pen"></i></button>
               <!-- <button (click)="deletarCandidato(candidato.id)" class="btn btn-danger">Delete</button> -->
-              <button type="button" class="btn btn-danger" (click)="openModal(deleteCandidato)">Delete</button>
+              <button type="button" class="btn btn-danger" (click)="openModal(deleteCandidato)"><i class="fas fa-trash-alt"></i></button>
 
               <ng-template #deleteCandidato>
                 <div class="modal-body text-center">

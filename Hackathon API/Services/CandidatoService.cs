@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using Hackathon_API.Data.Repositories;
 using Hackathon_API.Models;
@@ -26,7 +25,7 @@ namespace Hackathon_API.Services
             if (candidato != null)
             {
                 if (candidato.Nota >= 0 && candidato.Nota <= 100 && !(string.IsNullOrWhiteSpace(candidato.Nome) || string.IsNullOrWhiteSpace(candidato.Cidade))
-                    && !candidato.Nome.Any(char.IsDigit) && !candidato.Cidade.Any(char.IsDigit))
+                    && !candidato.Nome.Any(char.IsDigit) && !candidato.Cidade.Any(char.IsDigit) && candidato.Nome.All(char.IsLetter))
                 {
                     var candidatoDb = _candidatoRepository.PostCandidato(candidato);
 
@@ -52,7 +51,7 @@ namespace Hackathon_API.Services
         {
             if (candidato == null) return false;
             if (candidato.Nota >= 0 && candidato.Nota <= 100 && !(string.IsNullOrWhiteSpace(candidato.Nome) || string.IsNullOrWhiteSpace(candidato.Cidade))
-                && !candidato.Nome.Any(char.IsDigit) && !candidato.Cidade.Any(char.IsDigit))
+                && !candidato.Nome.Any(char.IsDigit) && !candidato.Cidade.Any(char.IsDigit) && candidato.Nome.All(char.IsLetter))
             {
                 _candidatoRepository.PutCandidato(candidato);
                 return true;
@@ -76,13 +75,11 @@ namespace Hackathon_API.Services
                     candidato.Situacao = true;
                     numVagas--;
                 }
-                else if (numVagas == 0)
+                else if (numVagas == 0 || candidato.Nota.Equals(0.0))
                 {
                     candidato.Situacao = false;
                 }
-                // PutCandidato(candidato);
             }
-
             PutCandidatos(candidatos);
         }
     }
