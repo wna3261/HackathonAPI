@@ -24,8 +24,14 @@ namespace Hackathon_API.Services
         {
             if (candidato != null)
             {
-                if (candidato.Nota >= 0 && candidato.Nota <= 100 && !(string.IsNullOrWhiteSpace(candidato.Nome) || string.IsNullOrWhiteSpace(candidato.Cidade))
-                    && !candidato.Nome.Any(char.IsDigit) && !candidato.Cidade.Any(char.IsDigit) && candidato.Nome.All(char.IsLetter))
+                //candidato.Nota >= 0 && candidato.Nota <= 100 &&
+                //&& !(string.IsNullOrWhiteSpace(candidato.Nome) || string.IsNullOrWhiteSpace(candidato.Cidade))
+                //&& (candidato.Nome.All(char.IsLetter) || candidato.Nome.Any(char.IsWhiteSpace))
+                //&& (candidato.Cidade.All(char.IsLetter) || candidato.Cidade.Any(char.IsWhiteSpace))
+                if (!candidato.Nome.StartsWith(' ') && !candidato.Cidade.StartsWith(' ') 
+                                                    && (candidato.Nome.All(char.IsLetter) || candidato.Nome.Any(char.IsWhiteSpace)) 
+                                                    && (candidato.Cidade.All(char.IsLetter) || candidato.Cidade.Any(char.IsWhiteSpace))
+                                                    && !candidato.Nome.Contains("  ") && !candidato.Cidade.Contains("  "))
                 {
                     var candidatoDb = _candidatoRepository.PostCandidato(candidato);
 
@@ -50,8 +56,10 @@ namespace Hackathon_API.Services
         public bool PutCandidato(Candidato candidato)
         {
             if (candidato == null) return false;
-            if (candidato.Nota >= 0 && candidato.Nota <= 100 && !(string.IsNullOrWhiteSpace(candidato.Nome) || string.IsNullOrWhiteSpace(candidato.Cidade))
-                && !candidato.Nome.Any(char.IsDigit) && !candidato.Cidade.Any(char.IsDigit) && candidato.Nome.All(char.IsLetter))
+            if (!candidato.Nome.StartsWith(' ') && !candidato.Cidade.StartsWith(' ')
+                                                && (candidato.Nome.All(char.IsLetter) || candidato.Nome.Any(char.IsWhiteSpace))
+                                                && (candidato.Cidade.All(char.IsLetter) || candidato.Cidade.Any(char.IsWhiteSpace))
+                                                && !candidato.Nome.Contains("  ") && !candidato.Cidade.Contains("  "))
             {
                 _candidatoRepository.PutCandidato(candidato);
                 return true;

@@ -8,8 +8,8 @@ import { CandidatoService } from '../_services/candidato.service';
   styleUrls: ['./candidato-get.component.css']
 })
 export class CandidatoGetComponent implements OnInit {
-  id: any;
-  candidato: any;
+  public id: any;
+  public candidato: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,7 +26,7 @@ export class CandidatoGetComponent implements OnInit {
     });
   }
 
-  home() {
+  public home() {
     this.router.navigate(['home']);
   }
 }

@@ -10,9 +10,8 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./candidato-update.component.css']
 })
 export class CandidatoUpdateComponent implements OnInit {
-  candidato: any = {};
-  id: any;
-  notaAntiga: any;
+  public candidato: any = {};
+  private id: any;
 
   constructor(
     private candidatoService: CandidatoService,
@@ -27,8 +26,7 @@ export class CandidatoUpdateComponent implements OnInit {
     });
   }
 
-  atualizarCandidato() {
-    this.notaAntiga = this.candidato.nota;
+  public atualizarCandidato() {
     if (!isNullOrUndefined(this.candidato.nota)) {
       this.candidatoService.atualizarCandidato(this.candidato).subscribe(data => {
         this.toastr.success("Candidato atualizado com sucesso.", "Sucesso!");
@@ -50,7 +48,7 @@ export class CandidatoUpdateComponent implements OnInit {
     }
   }
 
-  cancel() {
+  public cancel() {
     this.router.navigate(['home']);
   }
 

@@ -8,9 +8,9 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
   styleUrls: ['./candidato-list.component.scss']
 })
 export class CandidatoListComponent implements OnInit {
-  candidatos: any;
-  modalRef: BsModalRef;
-  message: string;
+  public candidatos: any;
+  private modalRef: BsModalRef;
+
   constructor(
     private candidatoService: CandidatoService,
     private modalService: BsModalService,
@@ -20,16 +20,15 @@ export class CandidatoListComponent implements OnInit {
     this.listarCandidatos();
   }
 
-  openModal(template: TemplateRef<any>) {
+  public openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
   }
   
-  decline(): void {
-    this.message = 'Declined!';
+  public decline(): void {
     this.modalRef.hide();
   }
 
-  listarCandidatos() {
+  private listarCandidatos() {
     this.candidatoService.listarCandidatos().subscribe(response => {
       this.candidatos = response;
     }, error => {
@@ -37,15 +36,15 @@ export class CandidatoListComponent implements OnInit {
     });
   }
 
-  getCandidato(id: any) {
+  public getCandidato(id: any) {
     this.router.navigate(['get/', id]);
   }
 
-  atualizarCandidato(id: any) {
+  public atualizarCandidato(id: any) {
     this.router.navigate(['put/', id]);
   }
 
-  deletarCandidato(id: any) {
+  public deletarCandidato(id: any) {
     this.candidatoService.deletarCandidato(id).subscribe(data => {
       this.listarCandidatos();
     }, error => {

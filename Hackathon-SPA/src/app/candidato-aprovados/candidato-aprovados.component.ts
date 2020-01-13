@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./candidato-aprovados.component.css']
 })
 export class CandidatoAprovadosComponent implements OnInit {
-  numVagas: any;
+  public numVagas: any;
 
   constructor(
     private candidatoService: CandidatoService,
@@ -17,7 +17,7 @@ export class CandidatoAprovadosComponent implements OnInit {
   ngOnInit() {
   }
 
-  exibirResultados() {
+  public exibirResultados() {
     this.candidatoService.exibirResultados(this.numVagas).subscribe(data => {
       this.router.navigate(['home']);
     }, error => {
@@ -25,7 +25,7 @@ export class CandidatoAprovadosComponent implements OnInit {
     });
   }
 
-  cancel() {
+  public cancel() {
     this.router.navigate(['home']);
   }
 }

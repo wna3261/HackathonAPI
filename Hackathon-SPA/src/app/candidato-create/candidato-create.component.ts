@@ -10,7 +10,7 @@ import { isNullOrUndefined } from 'util';
   styleUrls: ['./candidato-create.component.css']
 })
 export class CandidatoCreateComponent implements OnInit {
-  candidato: any = { nome: '', cidade: '', nota: 0 };
+  public candidato: any = { nome: '', cidade: '', nota: 0 };
 
   constructor(
     private candidatoService: CandidatoService,
@@ -20,7 +20,7 @@ export class CandidatoCreateComponent implements OnInit {
   ngOnInit() {
   }
 
-  cadastrarCandidato() {
+  public cadastrarCandidato() {
     if (!isNullOrUndefined(this.candidato.nota)) {
       this.candidatoService.cadastrarCandidato(this.candidato).subscribe(data => {
         this.toastr.success("Candidato cadastrado com sucesso.", 'Sucesso!');
@@ -42,7 +42,7 @@ export class CandidatoCreateComponent implements OnInit {
     }
   }
 
-  cancel() {
+  public cancel() {
     this.router.navigate(['home']);
   }
 }
