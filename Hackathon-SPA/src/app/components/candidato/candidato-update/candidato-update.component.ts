@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CandidatoService } from '../_services/candidato.service';
+import { CandidatoService } from '../../../_services/candidato.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { isNullOrUndefined } from 'util';
 import { ToastrService } from 'ngx-toastr';
@@ -9,6 +9,7 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './candidato-update.component.html',
   styleUrls: ['./candidato-update.component.css']
 })
+
 export class CandidatoUpdateComponent implements OnInit {
   public candidato: any = {};
   private id: any;

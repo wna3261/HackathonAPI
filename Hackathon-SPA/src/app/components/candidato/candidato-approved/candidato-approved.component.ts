@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { CandidatoService } from '../_services/candidato.service';
+import { CandidatoService } from '../../../_services/candidato.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-candidato-aprovados',
-  templateUrl: './candidato-aprovados.component.html',
-  styleUrls: ['./candidato-aprovados.component.css']
+  selector: 'app-candidato-approved',
+  templateUrl: './candidato-approved.component.html',
+  styleUrls: ['./candidato-approved.component.css']
 })
-export class CandidatoAprovadosComponent implements OnInit {
+
+export class CandidatoApprovedComponent implements OnInit {
   public numVagas: any;
 
   constructor(

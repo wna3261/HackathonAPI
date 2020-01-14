@@ -28,10 +28,7 @@ namespace Hackathon_API.Services
                 //&& !(string.IsNullOrWhiteSpace(candidato.Nome) || string.IsNullOrWhiteSpace(candidato.Cidade))
                 //&& (candidato.Nome.All(char.IsLetter) || candidato.Nome.Any(char.IsWhiteSpace))
                 //&& (candidato.Cidade.All(char.IsLetter) || candidato.Cidade.Any(char.IsWhiteSpace))
-                if (!candidato.Nome.StartsWith(' ') && !candidato.Cidade.StartsWith(' ') 
-                                                    && (candidato.Nome.All(char.IsLetter) || candidato.Nome.Any(char.IsWhiteSpace)) 
-                                                    && (candidato.Cidade.All(char.IsLetter) || candidato.Cidade.Any(char.IsWhiteSpace))
-                                                    && !candidato.Nome.Contains("  ") && !candidato.Cidade.Contains("  "))
+                if (!candidato.Nome.Contains("  ") && !candidato.Cidade.Contains("  "))
                 {
                     var candidatoDb = _candidatoRepository.PostCandidato(candidato);
 

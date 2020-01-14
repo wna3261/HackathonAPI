@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CandidatoService } from '../_services/candidato.service';
+import { CandidatoService } from '../../../_services/candidato.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { isNullOrUndefined } from 'util';
@@ -9,8 +9,10 @@ import { isNullOrUndefined } from 'util';
   templateUrl: './candidato-create.component.html',
   styleUrls: ['./candidato-create.component.css']
 })
+
 export class CandidatoCreateComponent implements OnInit {
   public candidato: any = { nome: '', cidade: '', nota: 0 };
+  public submitted: boolean = false;
 
   constructor(
     private candidatoService: CandidatoService,
@@ -21,9 +23,11 @@ export class CandidatoCreateComponent implements OnInit {
   }
 
   public cadastrarCandidato() {
+    this.submitted = true;
     if (!isNullOrUndefined(this.candidato.nota)) {
       this.candidatoService.cadastrarCandidato(this.candidato).subscribe(data => {
         this.toastr.success("Candidato cadastrado com sucesso.", 'Sucesso!');
+        this.submitted = false;
         this.router.navigate(['home']);
       }, error => {
         error.error.errors ?
@@ -34,10 +38,12 @@ export class CandidatoCreateComponent implements OnInit {
             });
           }) :
           this.toastr.warning(error.error);
+          this.submitted = false;
       });
     }
     else {
       this.toastr.error("O campo Nota é obrigatório.");
+      this.submitted = false;
       this.candidato.nota = 0;
     }
   }

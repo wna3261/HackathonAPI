@@ -1,19 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { CandidatoListComponent } from '../candidato-list/candidato-list.component';
-import { CandidatoGetComponent } from '../candidato-get/candidato-get.component';
-import { CandidatoCreateComponent } from '../candidato-create/candidato-create.component';
-import { CandidatoUpdateComponent } from '../candidato-update/candidato-update.component';
-import { CandidatoAprovadosComponent } from '../candidato-aprovados/candidato-aprovados.component';
-
 const routes: Routes = [
-  { path: '', component: CandidatoListComponent},
-  { path: 'home', component: CandidatoListComponent },
-  { path: 'get/:id', component: CandidatoGetComponent },
-  { path: 'cadastrar', component: CandidatoCreateComponent},
-  { path: 'put/:id', component: CandidatoUpdateComponent},
-  { path: 'exibirResultados', component: CandidatoAprovadosComponent}
+  { path: '', loadChildren: '../components/candidato/candidato-list/candidato-list.component.module#CandidatoListModule'},
+  { path: 'home', loadChildren: '../components/candidato/candidato-list/candidato-list.component.module#CandidatoListModule'},
+  { path: 'get/:id', loadChildren: '../components/candidato/candidato-get/candidato-get.component.module#CandidatoGetModule'},
+  { path: 'cadastrar',  loadChildren: '../components/candidato/candidato-create/candidato-create.component.module#CandidatoCreateModule'},
+  { path: 'put/:id', loadChildren: '../components/candidato/candidato-update/candidato-update.component.module#CandidatoUpdateModule'},
+  { path: 'exibirResultados', loadChildren: '../components/candidato/candidato-approved/candidato-approved.component.module#CandidatoApprovedModule'}
 ];
 
 @NgModule({

@@ -1,12 +1,14 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
-import { CandidatoService } from '../_services/candidato.service';
+import { CandidatoService } from '../../../_services/candidato.service';
 import { Router } from '@angular/router';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+
 @Component({
   selector: 'app-candidato-list',
   templateUrl: './candidato-list.component.html',
   styleUrls: ['./candidato-list.component.scss']
 })
+
 export class CandidatoListComponent implements OnInit {
   public candidatos: any;
   private modalRef: BsModalRef;

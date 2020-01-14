@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CandidatoService } from '../_services/candidato.service';
+import { CandidatoService } from '../../../_services/candidato.service';
 
 @Component({
   selector: 'app-candidato-get',
   templateUrl: './candidato-get.component.html',
   styleUrls: ['./candidato-get.component.css']
 })
+
 export class CandidatoGetComponent implements OnInit {
   public id: any;
   public candidato: any;
