@@ -16,13 +16,12 @@ namespace Hackathon_API.Models
         private double _nota;
         [Range(0, 100, ErrorMessage = "A nota deve estar entre 0 e 100")]
         [Required(ErrorMessage = "O campo Nota é obrigatório.")]
-        //[RegularExpression(@"^[\d]+[,]?[\d]{0,2}?$", ErrorMessage = "A nota so pode ter 2 casas depois da virgula")]
         public double Nota
         {
             get => _nota;
             set => _nota = Math.Round(value, 2);
         }
-
         public bool Situacao { get; set; }
+        public int? ConcursoId { get; set; }
     }
 }

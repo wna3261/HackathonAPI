@@ -22,6 +22,7 @@ namespace Hackathon_API.Data.Repositories
 
         public Candidato PostCandidato(Candidato candidato)
         {
+            candidato.ConcursoId = _dbcontext.Concursos.FirstOrDefault()?.Id;
             _dbcontext.Candidatos.Add(candidato);
             _dbcontext.SaveChanges();
 

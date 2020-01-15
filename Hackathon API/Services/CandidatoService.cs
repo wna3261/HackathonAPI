@@ -24,10 +24,6 @@ namespace Hackathon_API.Services
         {
             if (candidato != null)
             {
-                //candidato.Nota >= 0 && candidato.Nota <= 100 &&
-                //&& !(string.IsNullOrWhiteSpace(candidato.Nome) || string.IsNullOrWhiteSpace(candidato.Cidade))
-                //&& (candidato.Nome.All(char.IsLetter) || candidato.Nome.Any(char.IsWhiteSpace))
-                //&& (candidato.Cidade.All(char.IsLetter) || candidato.Cidade.Any(char.IsWhiteSpace))
                 if (candidato.Nota >= 0 && candidato.Nota <= 100 && !candidato.Nome.Contains("  ") && !candidato.Cidade.Contains("  "))
                 {
                     var candidatoDb = _candidatoRepository.PostCandidato(candidato);

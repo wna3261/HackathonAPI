@@ -9,10 +9,12 @@ namespace Hackathon_API.Data
         public DataContext(DbContextOptions<DataContext> options) : base (options)  {}
 
         public DbSet<Candidato> Candidatos {get; set;}
+        public DbSet<Concurso> Concursos {get; set;}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new CandidatoMap());
+            modelBuilder.ApplyConfiguration(new ConcursoMap());
         }
     }
 }
