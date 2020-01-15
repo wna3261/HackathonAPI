@@ -7,6 +7,7 @@ const routes: Routes = [
   { path: 'get/:id', loadChildren: '../components/candidato/candidato-get/candidato-get.component.module#CandidatoGetModule'},
   { path: 'cadastrar',  loadChildren: '../components/candidato/candidato-create/candidato-create.component.module#CandidatoCreateModule'},
   { path: 'put/:id', loadChildren: '../components/candidato/candidato-update/candidato-update.component.module#CandidatoUpdateModule'},
+  // { path: 'put/:id', loadChildren: '../components/candidato/candidato-create/candidato-create.component.module#CandidatoCreateModule'},
   { path: 'exibirResultados', loadChildren: '../components/candidato/candidato-approved/candidato-approved.component.module#CandidatoApprovedModule'}
 ];
 

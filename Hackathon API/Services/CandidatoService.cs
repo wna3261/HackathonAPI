@@ -28,7 +28,7 @@ namespace Hackathon_API.Services
                 //&& !(string.IsNullOrWhiteSpace(candidato.Nome) || string.IsNullOrWhiteSpace(candidato.Cidade))
                 //&& (candidato.Nome.All(char.IsLetter) || candidato.Nome.Any(char.IsWhiteSpace))
                 //&& (candidato.Cidade.All(char.IsLetter) || candidato.Cidade.Any(char.IsWhiteSpace))
-                if (!candidato.Nome.Contains("  ") && !candidato.Cidade.Contains("  "))
+                if (candidato.Nota >= 0 && candidato.Nota <= 100 && !candidato.Nome.Contains("  ") && !candidato.Cidade.Contains("  "))
                 {
                     var candidatoDb = _candidatoRepository.PostCandidato(candidato);
 
@@ -53,10 +53,7 @@ namespace Hackathon_API.Services
         public bool PutCandidato(Candidato candidato)
         {
             if (candidato == null) return false;
-            if (!candidato.Nome.StartsWith(' ') && !candidato.Cidade.StartsWith(' ')
-                                                && (candidato.Nome.All(char.IsLetter) || candidato.Nome.Any(char.IsWhiteSpace))
-                                                && (candidato.Cidade.All(char.IsLetter) || candidato.Cidade.Any(char.IsWhiteSpace))
-                                                && !candidato.Nome.Contains("  ") && !candidato.Cidade.Contains("  "))
+            if (candidato.Nota >= 0 && candidato.Nota <= 100 && !candidato.Nome.Contains("  ") && !candidato.Cidade.Contains("  "))
             {
                 _candidatoRepository.PutCandidato(candidato);
                 return true;
