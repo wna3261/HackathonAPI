@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Hackathon_API.Data.Repositories.Interfaces;
 using Hackathon_API.Models;
@@ -52,6 +51,11 @@ namespace Hackathon_API.Services
         {
             var candidatos = _concursoRepository.GetCandidatosConcurso().ToList();
             return candidatos;
+        }
+
+        public void UpdateVagas(int numVagas)
+        {
+            _concursoRepository.UpdateVagas(numVagas);
         }
     }
 }

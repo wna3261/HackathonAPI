@@ -13,7 +13,7 @@ import { isNullOrUndefined } from 'util';
 export class CandidatoCreateComponent implements OnInit {
   public candidato: any = { nome: '', cidade: '', nota: 0 };
   public submitted: boolean = false;
-  private id: number;
+  private id: number = 0;
 
   constructor(
     private candidatoService: CandidatoService,
@@ -22,23 +22,24 @@ export class CandidatoCreateComponent implements OnInit {
     private toastr: ToastrService) { }
 
   ngOnInit() {
-    this.id = this.route.snapshot.params.id;
+    if (!isNullOrUndefined(this.route.snapshot.params.id))
+      this.id = this.route.snapshot.params.id;
     this.hasId();
   }
 
   private hasId(): void {
-    if(this.id != 0){
-      this.candidatoService.getCandidato(this.id).subscribe(data=>{
+    if (this.id != 0) {
+      this.candidatoService.getCandidato(this.id).subscribe(data => {
         this.candidato = data;
       })
     }
   }
 
   public onSubmit(): void {
-    if(this.id == 0){
+    if (this.id == 0) {
       this.createCandidato();
     }
-    else{
+    else {
       this.updateCandidato();
     }
   }
@@ -59,7 +60,7 @@ export class CandidatoCreateComponent implements OnInit {
             });
           }) :
           this.toastr.warning(error.error);
-          this.submitted = false;
+        this.submitted = false;
       });
     }
     else {

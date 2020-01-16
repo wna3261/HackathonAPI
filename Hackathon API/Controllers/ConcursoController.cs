@@ -104,5 +104,19 @@ namespace Hackathon_API.Controllers
                 return BadRequest(e);
             }
         }
+
+        [HttpPatch("{numVagas}")]
+        public IActionResult UpdateVagas(int numVagas)
+        {
+            try
+            {
+                _concursoService.UpdateVagas(numVagas);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e);
+            }
+        }
     }
 }

@@ -53,5 +53,16 @@ namespace Hackathon_API.Data.Repositories
         {
             return _dbcontext.Candidatos.Where(x => x.ConcursoId == 1);
         }
+
+        public void UpdateVagas(int numVagas)
+        {
+            var concurso = _dbcontext.Concursos.FirstOrDefault();
+            if (concurso != null)
+            {
+                concurso.NumeroVagas = numVagas;
+                _dbcontext.Concursos.Update(concurso);
+            }
+            _dbcontext.SaveChanges();
+        }
     }
 }

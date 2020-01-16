@@ -11,5 +11,6 @@ namespace Hackathon_API.Services.Interfaces
         void DeleteConcurso(int idConcurso);
         Concurso PutConcurso(Concurso concurso);
         IEnumerable<Candidato> GetCandidatosConcurso();
+        void UpdateVagas(int numVagas);
     }
 }

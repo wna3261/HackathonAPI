@@ -1,35 +1,39 @@
 using System.Collections.Generic;
 using System.Linq;
 using Hackathon_API.Data.Repositories;
+using Hackathon_API.Data.Repositories.Interfaces;
 using Hackathon_API.Models;
+using Hackathon_API.Services.Interfaces;
 
 namespace Hackathon_API.Services
 {
     public class CandidatoService : ICandidatoService
     {
         private readonly ICandidatoRepository _candidatoRepository;
+        private readonly IConcursoService _concursoService;
 
-        public CandidatoService(ICandidatoRepository candidatoRepository)
+        public CandidatoService(ICandidatoRepository candidatoRepository, IConcursoService concursoService)
         {
             _candidatoRepository = candidatoRepository;
+            _concursoService = concursoService;
         }
 
         public IEnumerable<Candidato> GetCandidatos()
         {
+            var concursos = _concursoService.GetConcursos();
+            ExibirResultados(concursos.ElementAt(0).NumeroVagas);
             var candidatos = _candidatoRepository.GetCandidatos().OrderByDescending(x => x.Nota).ToList();
             return candidatos;
         }
 
         public Candidato PostCandidato(Candidato candidato)
         {
-            if (candidato != null)
+            if (candidato == null) return null;
+            if (candidato.Nota >= 0 && candidato.Nota <= 100 && !candidato.Nome.Contains("  ") && !candidato.Cidade.Contains("  "))
             {
-                if (candidato.Nota >= 0 && candidato.Nota <= 100 && !candidato.Nome.Contains("  ") && !candidato.Cidade.Contains("  "))
-                {
-                    var candidatoDb = _candidatoRepository.PostCandidato(candidato);
+                var candidatoDb = _candidatoRepository.PostCandidato(candidato);
 
-                    return candidatoDb;
-                }
+                return candidatoDb;
             }
             return null;
         }
@@ -65,7 +69,8 @@ namespace Hackathon_API.Services
 
         public void ExibirResultados(int numVagas)
         {
-            var candidatos = GetCandidatos().OrderByDescending(x => x.Nota).ToList();
+            var candidatos = _candidatoRepository.GetCandidatos().OrderByDescending(x => x.Nota).ToList();
+            //var candidatos = GetCandidatos().OrderByDescending(x => x.Nota).ToList();
             foreach (var candidato in candidatos)
             {
                 if (candidato.Nota > 0 && numVagas > 0)
