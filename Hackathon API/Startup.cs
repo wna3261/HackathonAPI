@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using FluentValidation.AspNetCore;
 using Hackathon_API.Configuration;
 using Hackathon_API.Data;
 using Microsoft.AspNetCore.Builder;
@@ -30,9 +32,11 @@ namespace Hackathon_API
         {
             services.AddDbContext<DataContext>(x => x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllers();
+            services.AddAutoMapper(typeof(Startup));
             services.RegisterServices();
             services.AddCors();
             services.AddSwaggerConfiguration();
+            services.AddMvc().AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<Startup>());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

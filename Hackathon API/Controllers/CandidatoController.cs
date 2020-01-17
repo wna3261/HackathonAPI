@@ -1,6 +1,6 @@
 using System;
-using Hackathon_API.Models;
 using Hackathon_API.Services;
+using Hackathon_API.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Hackathon_API.Controllers
@@ -34,8 +34,8 @@ namespace Hackathon_API.Controllers
         {
             try
             {
-                var candidato = _candidatoService.GetCandidato(idCandidato);
-                return Ok(candidato);
+                var candidatoViewModel = _candidatoService.GetCandidato(idCandidato);
+                return Ok(candidatoViewModel);
             }
             catch (Exception e)
             {
@@ -44,11 +44,11 @@ namespace Hackathon_API.Controllers
         }
 
         [HttpPost]
-        public IActionResult PostCandidato([FromBody]Candidato candidato)
+        public IActionResult PostCandidato([FromBody]CandidatoViewModel candidatoViewModel)
         {
             try
             {
-                var result = _candidatoService.PostCandidato(candidato);
+                var result = _candidatoService.PostCandidato(candidatoViewModel);
                 if (result != null)
                 {
                     return Created("/candidatos", result);
@@ -63,11 +63,11 @@ namespace Hackathon_API.Controllers
         }
 
         [HttpPut]
-        public IActionResult PutCandidato([FromBody]Candidato candidato)
+        public IActionResult PutCandidato([FromBody]CandidatoViewModel candidatoViewModel)
         {
             try
             {
-                var result = _candidatoService.PutCandidato(candidato);
+                var result = _candidatoService.PutCandidato(candidatoViewModel);
                 if (result)
                     return NoContent();
 
@@ -94,18 +94,18 @@ namespace Hackathon_API.Controllers
             }
         }
 
-        [HttpPut("exibirResultados/{numVagas}")]
-        public IActionResult ExibirResultados(int numVagas)
-        {
-            try
-            {
-                _candidatoService.ExibirResultados(numVagas);
-                return Ok(new { Success = true, Message = "Lista de Aprovados atualizado com sucesso!" });
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e);
-            }
-        }
+        //[HttpPut("exibirResultados/{numVagas}")]
+        //public IActionResult ExibirResultados(int numVagas)
+        //{
+        //    try
+        //    {
+        //        _candidatoService.ExibirResultados(numVagas);
+        //        return Ok(new { Success = true, Message = "Lista de Aprovados atualizado com sucesso!" });
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        return BadRequest(e);
+        //    }
+        //}
     }
 }
