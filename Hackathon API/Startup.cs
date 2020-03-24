@@ -34,6 +34,10 @@ namespace Hackathon_API
             services.AddControllers();
             services.AddAutoMapper(typeof(Startup));
             services.RegisterServices();
+            services.AddControllers().AddNewtonsoftJson(opt => {
+                opt.SerializerSettings.ReferenceLoopHandling =
+                    Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            });
             services.AddCors();
             services.AddSwaggerConfiguration();
             services.AddMvc().AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<Startup>());
